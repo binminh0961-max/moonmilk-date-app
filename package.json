@@ -1,0 +1,75 @@
+{
+  "name": "moonmilk-date-manager",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "electron:dev": "concurrently -k -s first \"npm run dev\" \"wait-on tcp:5173 && electron .\"",
+    "rebuild": "electron-rebuild -f -w better-sqlite3",
+    "pack:win": "electron-builder --win --x64",
+    "electron:build": "npm run build && npm run rebuild && electron-builder --win --x64",
+    "rebuild:electron": "cd node_modules/better-sqlite3 && npx prebuild-install -r electron -t 34.0.0"
+  },
+  "dependencies": {
+    "@rollup/rollup-win32-x64-msvc": "^4.68.0",
+    "better-sqlite3": "^11.8.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.16.0",
+    "node-cron": "^4.6.0",
+    "nodemailer": "^10.4.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^4.2.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "^34.0.0",
+    "electron-builder": "^26.18.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.0.7",
+    "wait-on": "^8.0.2"
+  },
+  "build": {
+    "appId": "com.moonmilk.expirymanager",
+    "productName": "MoonMilk Expiry Manager",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "**/node_modules/better-sqlite3/**",
+      "**/*.node"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "MoonMilk Expiry Manager"
+    }
+  }
+}

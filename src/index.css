@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: #fff2f6;
+    background-image: radial-gradient(#fecddc 1.2px, transparent 1.2px);
+    background-size: 24px 24px;
+    font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  input, textarea, [data-selectable="true"] {
+    user-select: text;
+    -webkit-user-select: text;
+  }
+}
+
+/* Thanh cuộn màu hồng phấn pastel kẹo ngọt cho bạn Bông */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffe4ec;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fb7185;
+  border-radius: 9999px;
+  border: 2px solid #ffe4ec;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f43f5e;
+}
+
+/* Hiệu ứng lấp lánh nơ Kitty */
+.kitty-card-shadow {
+  box-shadow: 0 10px 25px -5px rgba(244, 63, 122, 0.12), 0 8px 10px -6px rgba(244, 63, 122, 0.08);
+}
+
+.kitty-border {
+  border: 2px solid #fecddc;
+}
