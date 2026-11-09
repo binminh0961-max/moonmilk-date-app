@@ -15,7 +15,6 @@
     "rebuild:electron": "cd node_modules/better-sqlite3 && npx prebuild-install -r electron -t 34.0.0"
   },
   "dependencies": {
-    "@rollup/rollup-win32-x64-msvc": "^4.68.0",
     "better-sqlite3": "^11.8.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.16.0",
